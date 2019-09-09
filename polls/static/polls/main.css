@@ -13,7 +13,7 @@ body {
   }
   
   .bg-steel {
-    background-color: #212122b6;
+    background-color: #0c0c3859;
   }
   
   .site-header .navbar-nav .nav-link {
@@ -82,3 +82,43 @@ body {
   .account-heading {
     font-size: 2.5rem;
   }
+
+#foo {
+    font-size-adjust: 1.2;
+    
+    background: rgb(121, 126, 121, 0.151);
+    display: block;
+    border-radius: 20px;
+    height: 500px;
+    width: 850px;
+    display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "sans-serif";
+  font-weight: bold;
+}  
+#foo2 {
+        font-size-adjust: 1.2;
+        
+        background: rgba(121, 126, 121, 0.151);
+        display: block;
+        border-radius: 20px;
+        height: 500px;
+        width: 850px;
+        display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "sans-serif";
+    font-weight: bold;
+}  
+
+#foo3 {
+    color: white;
+    font-family: "sans-serif";
+}  
+
+#foo4 {
+    color: white;
+    font-family: "sans-serif";
+    font-size: 4.5em;
+}

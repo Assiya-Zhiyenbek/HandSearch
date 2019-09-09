@@ -1,17 +1,114 @@
-{% extends "polls/base.html" %}
-{% block content %}
-{% for sign in signs %}
-    <article class="media content-section">
-        <div class="media-body">
-            <div class="article-metadata">
-                <a class="mr-2" href="#">{{ sign.author }}</a>
-                <small class="text-muted">{{ sign.date_posted }}</small>
-            </div>
-            <h2><a class="article-title" href="#">{{ sign.title }}</a></h2>
-            <p class="article-content">{{ sign.content }}</p>
-            <p class="article-region">{{ sign.region }}</p>
-        </div>
-    </article>
+{% load static %}
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
 
-{% endfor %}
-{% endblock content %}
+<head>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/main.css' %}">
+
+    {% if title %}
+    <title>Django Sign - {{ title }}</title>
+    {% else %}
+    <title>Django Sign</title>
+    {% endif %}
+
+</head>
+
+<body>
+
+    <!-- Side Navigation -->
+    <nav class="w3-sidebar w3-bar-block w3-black w3-animate-left w3-top w3-text-light-grey w3-large"
+        style="z-index:3;width:250px;font-weight:bold;display:none;left:0;" id="mySidebar" >
+        <a href="javascript:void()" onclick="w3_close()" class="w3-bar-item w3-button w3-center w3-padding-32">CLOSE</a>
+        <a href="{% url 'polls-index' %}" class="w3-bar-item w3-button w3-center w3-padding-32">HOME</a>
+        <a href="{% url 'polls-about' %}" class="w3-bar-item w3-button w3-center w3-padding-32">ABOUT</a>
+        <a href="{% url 'polls-database' %}" class="w3-bar-item w3-button w3-center w3-padding-32">DATABASE</a>
+    </nav>
+
+
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu"
+        id="myOverlay"></div>
+
+    <!-- Header -->
+    <header class="w3-container w3-theme w3-padding" id="myHeader">
+        <i onclick="w3_open()" class="fa fa-bars w3-xlarge w3-button w3-theme"></i>
+        <div class="w3-center">
+            <h4 id="foo3">AWESOME</h4>
+            <h1 class="w3-animate-top" id="foo4">ASL</h1>
+            <div class="w3-padding-32">
+                <button class="w3-btn w3-xlarge w3-dark-grey w3-hover-light-grey"
+                    onclick="document.getElementById('id01').style.display='block'" style="font-weight:900;" id="foo3">words and
+                    signs</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="w3-row-padding w3-center w3-margin-top">
+        <div class="w3-half">
+            <form>
+                <input type="button" value="Press to Search by Hand" id="foo"
+                    onclick="window.location.href='index/byhand/'" />
+            </form>
+        </div>
+        <div class="w3-half">
+            <form>
+                <input type="button" value="Press to Search by Typing" id="foo2"
+                    onclick="window.location.href='index/bytyping/'" />
+            </form>
+        </div>
+
+
+        <!-- Modal -->
+        <div id="id01" class="w3-modal">
+            <div class="w3-modal-content w3-card-4 w3-animate-top">
+                <header class="w3-container w3-theme-l1">
+                    <span onclick="document.getElementById('id01').style.display='none'"
+                        class="w3-button w3-display-topright">×</span>
+                    <h4>Oh snap! We just showed you a modal..</h4>
+                    <h5>Because we can <i class="fa fa-smile-o"></i></h5>
+                </header>
+                <div class="w3-padding">
+                    <p>Cool huh? Ok, enough teasing around..</p>
+                    <p>Go to our <a class="w3-btn" href="/w3css/default.asp">W3.CSS Tutorial</a> to learn more!
+                    </p>
+                </div>
+                <footer class="w3-container w3-theme-l1">
+                    <p>Modal footer</p>
+                </footer>
+            </div>
+        </div>
+
+
+
+        <!-- Script for Sidebar, Tabs, Accordions, Progress bars and slideshows -->
+        <script>
+            // Side navigation
+            function w3_open() {
+                var x = document.getElementById("mySidebar");
+                document.getElementById("myOverlay").style.display = "block";
+                x.style.width = "30%";
+                x.style.fontSize = "40px";
+                x.style.paddingTop = "10%";
+                x.style.display = "block";
+            }
+            function w3_close() {
+                document.getElementById("mySidebar").style.display = "none";
+                document.getElementById("myOverlay").style.display = "none";
+            }
+
+
+
+        </script>
+</body>
+
+</html>
