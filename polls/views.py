@@ -12,4 +12,10 @@ def database(request):
     context = {
         'signs': Sign.objects.all()
     }
-    return render(request, 'polls/database.html', {'title': 'Data'}, context)
+    return render(request, 'polls/database.html', context, {'title': 'Database'})
+
+def byhand(request):
+    return render(request, 'polls/byhand.html', {'title':'ByHand'})
+
+def bytyping(request):
+    return render(request, 'polls/bytyping.html', {'title': 'ByTyping'})
